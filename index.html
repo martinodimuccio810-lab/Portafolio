@@ -1,171 +1,235 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Fz-Kiwi | Minecraft Developer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Portafolio — SkyFuture1 | Minecraft Developer</title>
+  <meta name="description" content="Portafolio de SkyFuture1 — Minecraft Developer especializado en BoxPvP, Survival y Networks.">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --bg:#050512;
+      --card: rgba(255,255,255,0.02);
+      --accent-base: 140;
+      --accent: hsl(var(--accent-base) 90% 55%);
+      --accent-2: hsl(calc(var(--accent-base) + 40) 90% 55%);
+      --glass: rgba(255,255,255,0.03);
+      --text: #dbefff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:Inter,system-ui;background:var(--bg);color:var(--text)}
+
+    .fondo{position:fixed;inset:0;z-index:-2;background:
+      radial-gradient(900px 500px at 10% 10%, rgba(80,200,255,0.08), transparent),
+      radial-gradient(900px 500px at 90% 90%, rgba(120,255,200,0.06), transparent),
+      linear-gradient(180deg,#040414,#07071a)
+    }
+
+    .wrap{max-width:1100px;margin:40px auto;padding:32px;border-radius:18px;
+      background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.006));
+      border:1px solid var(--glass);box-shadow:0 15px 40px rgba(0,0,0,.6)}
+
+    /* HERO */
+    .hero{text-align:center;padding:30px 10px}
+
+    .name{
+      font-size:clamp(40px,7vw,68px);
+      font-weight:900;
+      letter-spacing:1px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .role{
+      margin-top:10px;
+      font-size:18px;
+      opacity:.95;
+    }
+
+    .badges{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px
+    }
+
+    .badge{
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:13px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--glass)
+    }
+
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:22px;margin-top:30px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+    .card{
+      background:rgba(255,255,255,0.02);
+      padding:18px;
+      border-radius:14px;
+      border:1px solid var(--glass);
+      transition:.4s
+    }
+    .card:hover{transform:translateY(-6px)}
+
+    .titulo{display:flex;justify-content:space-between;margin-bottom:10px}
+
+    .servicio{
+      padding:12px;
+      border-radius:10px;
+      background:rgba(255,255,255,.015);
+      border:1px solid rgba(255,255,255,.03);
+      margin-top:10px
+    }
+
+    .habilidad{margin:12px 0}
+    .barra{
+      height:12px;
+      background:rgba(255,255,255,.05);
+      border-radius:999px;
+      overflow:hidden
+    }
+    .lleno{
+      height:100%;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2))
+    }
+
+    .cta{
+      margin-top:12px;
+      padding:12px;
+      width:100%;
+      border-radius:12px;
+      font-weight:800;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#041018;
+      border:none;
+      cursor:pointer
+    }
+
+    footer{text-align:center;margin-top:22px;font-size:13px;opacity:.85}
+  </style>
 </head>
+
 <body>
+<div class="fondo"></div>
 
-<!-- NAVBAR LATERAL -->
-<nav class="side-nav">
-  <a href="#hero" class="dot active"></a>
-  <a href="#about" class="dot"></a>
-  <a href="#services" class="dot"></a>
-  <a href="#skills" class="dot"></a>
-  <a href="#projects" class="dot"></a>
-</nav>
+<main class="wrap">
 
-<!-- HERO -->
-<header id="hero" class="fade">
-  <img src="ghostly.png" alt="ghostly Logo" class="ghostly-logo">
-  <h1>Fz-Kiwi</h1>
-  <p>Minecraft Developer • BoxPvP • Networks</p>
+  <!-- HERO SIN LOGO -->
+  <section class="hero">
+    <div class="name">SkyFuture1</div>
+    <div class="role">
+      Minecraft Developer especializado en BoxPvP, Survival y Networks
+    </div>
 
-  <!-- DISCORD COPIABLE -->
-  <div class="discord-copy" onclick="copyDiscord()">
-    👾 Discord: <span id="discordName">Fz-Kiwi</span>
-    <small id="copyMsg">click para copiar</small>
+    <div class="badges">
+      <span class="badge">BoxPvP</span>
+      <span class="badge">Survival</span>
+      <span class="badge">LuckPerms</span>
+      <span class="badge">Tebex</span>
+      <span class="badge">Optimización</span>
+    </div>
+  </section>
+
+  <div class="grid">
+
+    <div>
+      <div class="card">
+        <div class="titulo">
+          <h2>Sobre mi trabajo</h2>
+          <small>Experiencia real</small>
+        </div>
+        <p>
+          Desarrollo servidores Minecraft desde cero, enfocados en rendimiento,
+          experiencia del jugador y monetización. Configuraciones profesionales
+          listas para abrir y escalar.
+        </p>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="titulo">
+          <h2>Servicios</h2>
+          <small>Qué puedo hacer</small>
+        </div>
+
+        <div class="servicio">
+          <h3>⚔️ Setup BoxPvP</h3>
+          <p>Kits, rangos, balance PvP, eventos y optimización completa.</p>
+        </div>
+
+        <div class="servicio">
+          <h3>🌍 Setup Survival</h3>
+          <p>Economía, protecciones, warps, tiendas y progresión.</p>
+        </div>
+
+        <div class="servicio">
+          <h3>🔐 Plugins & Permisos</h3>
+          <p>LuckPerms, TAB, EssentialsX y configuraciones avanzadas.</p>
+        </div>
+
+        <div class="servicio">
+          <h3>💰 Tebex</h3>
+          <p>Tienda, rangos, automatización y pagos.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="titulo">
+          <h2>Habilidades</h2>
+          <small>Nivel técnico</small>
+        </div>
+
+        <div class="habilidad"><b>Configuración de Plugins</b>
+          <div class="barra"><div class="lleno" style="width:60%"></div></div>
+        </div>
+
+        <div class="habilidad"><b>BoxPvP</b>
+          <div class="barra"><div class="lleno" style="width:60%"></div></div>
+        </div>
+
+        <div class="habilidad"><b>LuckPerms</b>
+          <div class="barra"><div class="lleno" style="width:60%"></div></div>
+        </div>
+
+        <div class="habilidad"><b>Optimización</b>
+          <div class="barra"><div class="lleno" style="width:60%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card">
+        <div class="titulo">
+          <h2>Contacto</h2>
+          <small>Disponible</small>
+        </div>
+        <p><b>Discord:</b> SkyFuture1</p>
+        <button class="cta" onclick="navigator.clipboard.writeText('SkyFuture1')">
+          Copiar Discord
+        </button>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <div class="titulo">
+          <h2>Networks</h2>
+          <small>Experiencia</small>
+        </div>
+        <p><b>GhostlyMC</b><br>BoxPvP • Survival</p>
+        <p style="margin-top:6px"><b>MetropolisLifeRP</b><br>Roleplay</p>
+      </div>
+    </aside>
+
   </div>
-</header>
 
-<!-- SOBRE MI -->
-<section id="about" class="fade">
-  <h2>Sobre mí</h2>
-  <p>
-    Minecraft Developer con experiencia en servidores BoxPvP,
-    Survival y Roleplay. Especializado en configuración de plugins,
-    rangos, LuckPerms, Tebex, hologramas y eventos.
-  </p>
-</section>
+  <footer>
+    © 2025 • SkyFuture1 • Minecraft Developer
+  </footer>
 
-<!-- SERVICIOS -->
-<section id="services" class="fade">
-  <h2>Servicios</h2>
-
-  <div class="services">
-    <div class="service-card fade">
-      <h3>Setup BoxPvP</h3>
-      <p>Configuración completa desde cero, kits, rangos y PvP.</p>
-    </div>
-
-    <div class="service-card fade">
-      <h3>Setup Survival</h3>
-      <p>Economía, protecciones, warps y experiencia del jugador.</p>
-    </div>
-
-    <div class="service-card fade">
-      <h3>Configuración de Plugins</h3>
-      <p>EssentialsX, TAB, LuckPerms, BetterRTP y más.</p>
-    </div>
-
-    <div class="service-card fade">
-      <h3>Tienda Tebex</h3>
-      <p>Integración completa, rangos y automatización.</p>
-    </div>
-
-    <div class="service-card fade">
-      <h3>Seguridad & Optimización</h3>
-      <p>Protección, estabilidad y reducción de lag.</p>
-    </div>
-
-    <div class="service-card fade">
-      <h3>Soporte & Aprendizaje</h3>
-      <p>Aprendo nuevos plugins rápidamente.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FORTALEZAS -->
-<section id="skills" class="fade">
-  <h2>Fortalezas</h2>
-  <ul class="skills">
-    <li class="fade">🧩 Plugins Config</li>
-    <li class="fade">🔐 LuckPerms</li>
-    <li class="fade">💰 Tebex</li>
-    <li class="fade">⚔️ BoxPvP</li>
-  </ul>
-</section>
-
-<!-- PROYECTOS -->
-<section id="projects" class="fade">
-  <h2>Networks</h2>
-
-  <div class="project fade">
-    <img src="ghostly.png" alt="GhostlyMC" class="logo">
-    <h3>GhostlyMC</h3>
-    <p><b>Modo:</b> BoxPvP • Survival</p>
-    <p>
-      Setup completo desde cero, plugins,
-      rangos, Tebex y optimización.
-    </p>
-  </div>
-
-  <div class="project fade">
-    <img src="Metro.png" alt="MetropolisLifeRP" class="logo">
-    <h3>MetropolisLifeRP Network</h3>
-    <p><b>Modo:</b> Roleplay (RP)</p>
-    <p>
-      Essentials, rangos,
-      Tebex, hologramas y eventos.
-    </p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="fade">
-  <p>© 2025 • SkyFuture1 • Minecraft Developer</p>
-</footer>
-
-<!-- SCRIPTS -->
-<script>
-  // FADE SCROLL
-  const elements = document.querySelectorAll('.fade');
-
-  const showOnScroll = () => {
-    const triggerBottom = window.innerHeight * 0.85;
-    elements.forEach(el => {
-      if (el.getBoundingClientRect().top < triggerBottom) {
-        el.classList.add('show');
-      }
-    });
-  };
-
-  window.addEventListener('scroll', showOnScroll);
-  showOnScroll();
-
-  // NAV DOT ACTIVO
-  const sections = document.querySelectorAll('header, section');
-  const dots = document.querySelectorAll('.side-nav .dot');
-
-  window.addEventListener('scroll', () => {
-    let current = 0;
-    sections.forEach((section, index) => {
-      if (scrollY >= section.offsetTop - window.innerHeight / 2) {
-        current = index;
-      }
-    });
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[current]?.classList.add('active');
-  });
-
-  // COPIAR DISCORD
-  function copyDiscord() {
-    const name = document.getElementById("discordName").innerText;
-    const msg = document.getElementById("copyMsg");
-
-    navigator.clipboard.writeText(name);
-    msg.innerText = "copiado ✔";
-    msg.style.color = "#86efac";
-
-    setTimeout(() => {
-      msg.innerText = "click para copiar";
-      msg.style.color = "";
-    }, 2000);
-  }
-</script>
-
+</main>
 </body>
 </html>

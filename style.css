@@ -1,407 +1,165 @@
-/* =============================
-   SKYFUTURE1 – GHOSTLY PORTFOLIO CSS
-   Blur + Glow + Animaciones PRO
-   ============================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root{
+  --accent:#8cff9e;
+  --accent2:#6bb0ff;
+  --text:#dbefff;
+  --glass: rgba(255,255,255,0.05);
+}
+.txt-green {
+  --accent:#8cff9e;
+  --accent2:#6bb0ff;
+  --text:#dbefff;
+  --glass: rgba(255,255,255,0.05);
 }
 
-body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color: #e5e7eb;
-  scroll-behavior: smooth;
+html{
+  height:100%;
+  background:#000;
 }
 
-/* =============================
-   HEADER / HERO
-   ============================= */
-header {
-  min-height: 100vh;
-  text-align: center;
-  padding: 120px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at top, #1e1b4b, #020617);
+body{
+  height:100%;
+  margin:0;
+  font-family:Inter, system-ui;
+  background:transparent;
+  color:var(--text);
 }
 
-header h1 {
-  font-size: clamp(42px, 6vw, 64px);
-  letter-spacing: 3px;
+*{box-sizing:border-box;}
+
+#galaxia{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
 }
 
-header p {
-  margin-top: 12px;
-  font-size: 20px;
-  opacity: 0.85;
+.wrap{
+  max-width:1100px;
+  margin:40px auto;
+  padding:32px;
+  border-radius:18px;
+  background: rgba(0,0,0,0.2);
+  border:1px solid var(--glass);
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
+  backdrop-filter:blur(12px);
+  position:relative;
+  z-index:1;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 35px;
-  padding: 14px 36px;
-  border-radius: 16px;
-  text-decoration: none;
-  font-weight: bold;
-  color: black;
-  background: linear-gradient(135deg, #a855f7, #60a5fa);
-  box-shadow: 0 0 25px rgba(168,85,247,0.6);
-  transition: 0.35s ease;
+.hero{text-align:center;padding:30px 10px;}
+
+.name{
+  font-size:clamp(40px,7vw,68px);
+  font-weight:900;
+  letter-spacing:1px;
+  background: linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  color:transparent;
+  filter:
+    drop-shadow(0 0 6px var(--accent))
+    drop-shadow(0 0 16px var(--accent2));
+  animation: glow 2s infinite alternate;
 }
 
-.btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 45px rgba(168,85,247,1);
+@keyframes glow{
+  from{
+    filter:
+      drop-shadow(0 0 6px var(--accent))
+      drop-shadow(0 0 16px var(--accent2));
+  }
+  to{
+    filter:
+      drop-shadow(0 0 20px var(--accent2))
+      drop-shadow(0 0 34px var(--accent));
+  }
 }
 
-/* =============================
-   SECCIONES TIPO KUMAH
-   ============================= */
-section {
-  min-height: 100vh;
-  padding: 120px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.role{margin-top:10px;font-size:18px;}
+.devtime{margin-top:6px;font-size:16px;opacity:.85;}
+
+.badges{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
 }
 
-h2 {
-  font-size: 36px;
-  margin-bottom: 35px;
-  color: #c084fc;
+.badge{
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:13px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--glass);
 }
 
-/* =============================
-   SERVICIOS
-   ============================= */
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-  width: 100%;
-  max-width: 1100px;
+.grid{
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:22px;
+  margin-top:30px;
 }
 
-.service-card {
-  background: rgba(2,6,23,0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 32px;
-  border-radius: 22px;
-  border: 1px solid #1e293b;
-  position: relative;
-  overflow: hidden;
-  transition: 0.4s ease;
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;}
 }
 
-.service-card::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(168,85,247,0.7), rgba(59,130,246,0.4), transparent);
-  filter: blur(18px);
-  opacity: 0;
-  z-index: -1;
-  transition: 0.4s;
+.card{
+  background: rgba(0,0,0,0.2);
+  padding:18px;
+  border-radius:14px;
+  border:1px solid var(--glass);
+  backdrop-filter:blur(12px);
+  transition:.4s;
 }
 
-.service-card:hover {
-  transform: translateY(-10px) scale(1.02);
+.card:hover{transform:translateY(-6px);}
+
+.titulo{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
 }
 
-.service-card:hover::after {
-  opacity: 1;
+.servicio{
+  padding:12px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,.03);
+  margin-top:10px;
 }
 
-.service-card h3 {
-  font-size: 22px;
-  color: #e9d5ff;
-  margin-bottom: 12px;
+.habilidad{margin:12px 0;}
+
+.barra{
+  height:12px;
+  background:rgba(255,255,255,.05);
+  border-radius:999px;
+  overflow:hidden;
 }
 
-.service-card p {
-  opacity: 0.9;
-  line-height: 1.6;
+.lleno{
+  height:100%;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
 }
 
-/* =============================
-   SKILLS
-   ============================= */
-.skills {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 22px;
-  list-style: none;
-  max-width: 900px;
-  width: 100%;
+.cta{
+  margin-top:12px;
+  padding:12px;
+  width:100%;
+  border-radius:12px;
+  font-weight:800;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#041018;
+  border:none;
+  cursor:pointer;
 }
 
-.skills li {
-  background: rgba(2,6,23,0.65);
-  backdrop-filter: blur(8px);
-  padding: 20px;
-  border-radius: 18px;
-  font-weight: bold;
-  border: 1px solid #1e293b;
-  transition: 0.35s;
-}
-
-.skills li:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(168,85,247,0.6);
-}
-
-/* =============================
-   PROYECTOS
-   ============================= */
-.project {
-  max-width: 720px;
-  background: rgba(2,6,23,0.65);
-  backdrop-filter: blur(12px);
-  padding: 42px;
-  border-radius: 26px;
-  border: 1px solid #1e293b;
-  margin: 30px 0;
-  transition: 0.45s ease;
-}
-
-.project:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 45px rgba(124,58,237,0.7);
-}
-
-.project h3 {
-  font-size: 26px;
-  color: #a855f7;
-  margin-bottom: 10px;
-}
-
-/* =============================
-   LOGOS
-   ============================= */
-.logo {
-  width: 140px;
-  margin-bottom: 20px;
-}
-
-.ghostly-logo {
-  width: 160px;
-  margin-bottom: 25px;
-  animation: floatGhost 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(168,85,247,0.9));
-  transition: transform 0.4s;
-}
-
-.ghostly-logo:hover {
-  transform: scale(1.12) rotate(-2deg);
-}
-
-/* =============================
-   FOOTER
-   ============================= */
-footer {
-  padding: 30px;
-  text-align: center;
-  background: #020617;
-  border-top: 1px solid #1e293b;
-  opacity: 0.8;
-}
-
-/* =============================
-   SCROLL ANIMATIONS
-   ============================= */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.9s ease;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =============================
-   KEYFRAMES
-   ============================= */
-@keyframes floatGhost {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes glowPulse {
-  0% { filter: drop-shadow(0 0 22px rgba(168,85,247,0.6)); }
-  50% { filter: drop-shadow(0 0 55px rgba(168,85,247,1)); }
-  100% { filter: drop-shadow(0 0 22px rgba(168,85,247,0.6)); }
-}
-/* ===== SECCIONES FULLSCREEN REAL ===== */
-header,
-section {
-  min-height: 100vh;
-  width: 100%;
-  padding: 120px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Separación visual */
-section:nth-of-type(odd) {
-  background: linear-gradient(180deg, #020617, #0f172a);
-}
-
-section:nth-of-type(even) {
-  background: linear-gradient(180deg, #0f172a, #020617);
-}
-
-/* Header más fuerte */
-header {
-  background: radial-gradient(circle at top, #312e81, #020617);
-}
-/* ================================
-   KUMAH.LAT STYLE – FULLPAGE
-================================ */
-
-/* SCROLL POR SECCIÓN */
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-body {
-  overflow-y: scroll;
-}
-
-/* CADA SECCIÓN = 1 PANTALLA */
-header,
-section {
-  height: 100vh;
-  width: 100%;
-  scroll-snap-align: start;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding: 0 20px;
-  text-align: center;
-}
-
-/* HERO */
-header {
-  background: radial-gradient(circle at top, #312e81, #020617);
-}
-
-/* SECCIONES ALTERNADAS */
-section:nth-of-type(1) {
-  background: linear-gradient(180deg, #020617, #0f172a);
-}
-
-section:nth-of-type(2) {
-  background: linear-gradient(180deg, #0f172a, #020617);
-}
-
-section:nth-of-type(3) {
-  background: linear-gradient(180deg, #020617, #0f172a);
-}
-
-section:nth-of-type(4) {
-  background: linear-gradient(180deg, #0f172a, #020617);
-}
-/* ===== KUMAH.LAT SCROLL REAL ===== */
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-body {
-  overflow-y: scroll;
-}
-
-header,
-section {
-  height: 100vh;
-  width: 100%;
-  scroll-snap-align: start;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-}
-
-/* FONDOS POR SECCIÓN */
-header {
-  background: radial-gradient(circle at top, #312e81, #020617);
-}
-
-section:nth-of-type(1) {
-  background: linear-gradient(180deg, #020617, #0f172a);
-}
-
-section:nth-of-type(2) {
-  background: linear-gradient(180deg, #0f172a, #020617);
-}
-
-section:nth-of-type(3) {
-  background: linear-gradient(180deg, #020617, #0f172a);
-}
-
-section:nth-of-type(4) {
-  background: linear-gradient(180deg, #0f172a, #020617);
-}
-/* ================================
-   NAVBAR LATERAL KUMAH STYLE
-================================ */
-
-.side-nav {
-  position: fixed;
-  right: 25px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  z-index: 1000;
-}
-
-.side-nav .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  transition: 0.3s;
-}
-
-.side-nav .dot:hover {
-  transform: scale(1.4);
-  background: #c084fc;
-}
-
-.side-nav .dot.active {
-  background: #a855f7;
-  box-shadow: 0 0 12px rgba(168,85,247,1);
-}
-.discord-user {
-  margin-top: 25px;
-  font-size: 18px;
-  color: #c084fc;
-}
-
-.discord-user span {
-  font-weight: bold;
-  color: #a855f7;
+footer{
+  text-align:center;
+  margin-top:22px;
+  font-size:13px;
+  opacity:.85;
 }

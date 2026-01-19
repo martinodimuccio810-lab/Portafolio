@@ -19,7 +19,10 @@
   <section class="hero">
     <div class="name">SkyFuture1</div>
     <div class="role"><i class="fa-solid fa-cubes"></i>Minecraft Developer</div>
-    <div class="Tiempo"><i class="fa-solid fa-clock"></i>7 Meses Como Developer</div>
+<div class="Tiempo">
+  <i class="fa-solid fa-clock"></i>
+  <span id="tiempo-dev">Cargando...</span>
+</div>
     <div class="badges">
       <span class="badge">LuckPerms</span>
       <span class="badge">Tebex</span>
@@ -35,7 +38,7 @@
       <div class="card">
         <div class="titulo"><h2><i class="fa-solid fa-circle-user"></i>Acerca de Mi</h2><small>Configurador</small></div>
         <p>
-          Tengo 14 Años Llevo 6 meses Haciendo de developer Trabajando Con Proyectos. Configurando los y Administrando los Me Intereso ser Developer Ya que Me surgio la duda de Como servidores Grandes Administraban todo el servidor Como hacian Cosas. Como Existia Este Comando o Este Menu y Etc 
+          Tengo 14 Años Soy developer Trabajando Con Proyectos. Configurando los y Administrando los Me Intereso ser Developer Ya que Me surgio la duda de Como servidores Grandes Administraban todo el servidor Como hacian Cosas. Como Existia Este Comando o Este Menu y Etc 
         </p>
       </div>
 
@@ -85,9 +88,10 @@
         <div class="titulo"><h2>Proyectos Y Opiniones</h2><small>Networks</small></div>
 
         <div class="servicio"><b><img src="Ghostly.png" alt="Mi imagen" width="50" height="50"> GhostlyMC</b><br>Configuracion De Rangos, Tebex , Hologramas, Crates, Kits</div>
-        <div class="servicio"><p>Dc: squeeze_zr7 (Dueño De GhostlyMC)</p><br>muy buen esclavo nada que decir ayudaste en todo y ns que mas decir pero muy buen trabajador</div>
+        <div class="servicio"><p>Dc: squeeze_zr7 (Dueño De GhostlyMC)</p><br>muy buen esclavo nada que decir ayudaste en todo y ns que mas decir pero muy buen trabajador.</div>
         <div class="servicio"><b><img src="Metropolis.png" alt="Mi imagen" width="50" height="50"> MetropolisLifeRP</b><br>Configuracion De Rangos, Tebex , Hologramas, Tab y ScoreBar</div>
         <div class="servicio"><b><img src="Minecloudy.png" alt="Mi imagen" width="50" height="50"> MineCloudy (Proyecto Propio Con Un Amigo)</b><br>Configuracion de Tab y ScoreBar, Hologrammas, Kits, </div>
+        <div class="servicio"><p>Dc: fz_kiwi (2 Dueño De MineCloudy)</p><br>En El Tiempo que pase con el hizo un Muy buen trabajo me encanto todo lo que hizo para mi y el servidor la verdad me dejo sin palabras con el trabajo que hace Sky.</div>
         <div class="servicio"><b><img src="Silentmc.png" alt="Mi imagen" width="50" height="50"> SilentMC</b><br>Configuracion de Tab y ScoreBar, Hologrammas, Kits, </div>
         <div class="servicio"><p>Dc: pablucho27 (Dueño De SilentMC)</p><br>medio demoron pa las cosas pero dejas exelente todo lo que haces y ya que mas</div>
         <div class="servicio"><img src="" alt=""></div>
@@ -97,7 +101,7 @@
 
   </div>
 
-  <footer>© 2025 • SkyFuture1 • Minecraft Developer</footer>
+  <footer>© 2026 • SkyFuture1 • Minecraft Developer</footer>
 
 </main>
 
@@ -136,6 +140,48 @@ function animar(){
   requestAnimationFrame(animar);
 }
 animar();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // 📅 Fecha de inicio
+  const fechaInicio = new Date("2025-05-22T00:00:00");
+
+  function actualizarTiempoDeveloper() {
+    const ahora = new Date();
+
+    let start = new Date(fechaInicio);
+    let meses = 0;
+
+    while (true) {
+      let siguiente = new Date(start);
+      siguiente.setMonth(siguiente.getMonth() + 1);
+
+      if (siguiente <= ahora) {
+        meses++;
+        start = siguiente;
+      } else {
+        break;
+      }
+    }
+
+    const dias = Math.floor(
+      (ahora - start) / (1000 * 60 * 60 * 24)
+    );
+
+    const segundosTotales = Math.floor((ahora - fechaInicio) / 1000);
+    const minutos = Math.floor((segundosTotales % 3600) / 60);
+    const segundos = segundosTotales % 60;
+
+    document.getElementById("tiempo-dev").innerText =
+      `${meses} Meses ${dias} Días ${minutos} Minutos ${segundos} Segundos`;
+  }
+
+  actualizarTiempoDeveloper();
+  setInterval(actualizarTiempoDeveloper, 1000);
+
+});
 </script>
 
 </body>

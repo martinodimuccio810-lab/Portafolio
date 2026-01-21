@@ -59,3 +59,4 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDiscordStatus();
     setInterval(updateDiscordStatus, 15000);
 });
+

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio — SkyFuture1 | Minecraft Developer</title>
+  <title>Portafolio — SkyyVodka | Minecraft Developer</title>
 
   
   <link rel="stylesheet" href="style.css">
@@ -17,7 +17,7 @@
 <main class="wrap">
 
   <section class="hero">
-    <div class="name">SkyFuture1</div>
+    <div class="name">SkyyVodka_</div>
     <div class="role"><i class="fa-solid fa-cubes"></i>Minecraft Developer</div>
 <div class="Tiempo">
   <i class="fa-solid fa-clock"></i>
@@ -78,7 +78,7 @@
 
       <div class="card">
         <div class="titulo"><h2>Contacto</h2><small>Directo</small></div>
-        <p><b><i class="fa-brands fa-discord"></i>Discord:</b> SkyFuture1</p>
+        <p><b><i class="fa-brands fa-discord"></i>Discord:</b> skyvodka_</p>
         <div class="discord-card">
     <div class="avatar-container">
         <img id="discord-avatar" src="" class="avatar">
@@ -109,7 +109,7 @@
 
   </div>
 
-  <footer>© 2026 • SkyFuture1 • Minecraft Developer</footer>
+  <footer>© 2026 • SkyyVodka_ • Minecraft Developer</footer>
 
 </main>
 
@@ -151,7 +151,6 @@ animar();
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
 
   // 📅 Fecha de inicio
   const fechaInicio = new Date("2025-05-22T00:00:00");
@@ -160,8 +159,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const ahora = new Date();
 
     let start = new Date(fechaInicio);
+    let años = 0;
     let meses = 0;
 
+    // Contar años reales
+    while (true) {
+      let siguiente = new Date(start);
+      siguiente.setFullYear(siguiente.getFullYear() + 1);
+
+      if (siguiente <= ahora) {
+        años++;
+        start = siguiente;
+      } else break;
+    }
+
+    // Contar meses restantes
     while (true) {
       let siguiente = new Date(start);
       siguiente.setMonth(siguiente.getMonth() + 1);
@@ -169,27 +181,21 @@ document.addEventListener("DOMContentLoaded", () => {
       if (siguiente <= ahora) {
         meses++;
         start = siguiente;
-      } else {
-        break;
-      }
+      } else break;
     }
 
-    const dias = Math.floor(
-      (ahora - start) / (1000 * 60 * 60 * 24)
-    );
-
-    const segundosTotales = Math.floor((ahora - fechaInicio) / 1000);
-    const minutos = Math.floor((segundosTotales % 3600) / 60);
-    const segundos = segundosTotales % 60;
+    // Resto exacto
+    const restoMs = ahora - start;
+    const dias = Math.floor(restoMs / (1000 * 60 * 60 * 24));
+    const minutos = Math.floor((restoMs / (1000 * 60)) % 60);
+    const segundos = Math.floor((restoMs / 1000) % 60);
 
     document.getElementById("tiempo-dev").innerText =
-      `${meses} Meses ${dias} Días ${minutos} Minutos ${segundos} Segundos`;
+      `${años} Años ${meses} Meses ${dias} Días ${minutos} Minutos ${segundos} Segundos`;
   }
 
   actualizarTiempoDeveloper();
   setInterval(actualizarTiempoDeveloper, 1000);
-
-});
 </script>
 
 </body>

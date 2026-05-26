@@ -1,62 +1,53 @@
-const DISCORD_ID = '1024480301998690304'; 
+const DISCORD_ID = "1024480301998690304";
 
-async function updateDiscordStatus() {
-    try {
-        const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
-        const json = await response.json();
-        
-        if (!json.success) return;
+const avatar = document.getElementById("discord-avatar");
+const dot = document.getElementById("status-dot");
+const text = document.getElementById("status-text");
 
-        const { discord_status, activities, discord_user } = json.data;
+const statusColor = {
+  online: "#23a55a",
+  idle: "#f0b232",
+  dnd: "#f23f43",
+  offline: "#80848e"
+};
 
-        // 1. Actualizar Foto
-        const avatarImg = document.getElementById('discord-avatar');
-        if (avatarImg) {
-            avatarImg.src = `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${discord_user.avatar}.webp`;
-        }
+const statusName = {
+  online: "En línea",
+  idle: "Ausente",
+  dnd: "No molestar",
+  offline: "Desconectado"
+};
 
-        // 2. Actualizar Color del Punto
-        const statusDot = document.getElementById('status-dot');
-        if (statusDot) {
-            const colors = {
-                online: '#23a55a', // Verde
-                idle: '#f0b232',   // Amarillo (Ausente)
-                dnd: '#f23f43',    // Rojo (No molestar)
-                offline: '#80848e' // Gris (Desconectado)
-            };
-            statusDot.style.backgroundColor = colors[discord_status] || colors.offline;
-        }
+async function loadDiscord(){
+  try{
+    const res = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+    const data = await res.json();
 
-        // 3. Traducción de estados y prioridad de texto
-        const statusText = document.getElementById('status-text');
-        if (statusText) {
-            // Diccionario de traducción
-            const statusNames = {
-                online: 'En línea',
-                idle: 'Ausente',
-                dnd: 'No molestar',
-                offline: 'Desconectado'
-            };
+    if(!data.success) return;
 
-            // Buscamos si tienes un "Estado personalizado" escrito por ti
-            const customStatus = activities.find(a => a.type === 4);
+    const user = data.data.discord_user;
+    const status = data.data.discord_status;
+    const activities = data.data.activities || [];
 
-            if (customStatus && customStatus.state) {
-                // Si tienes un mensaje escrito (como el de tu imagen), muestra ese
-                statusText.innerText = customStatus.state;
-            } else {
-                // Si no tienes mensaje, muestra "No molestar", "En línea", etc.
-                statusText.innerText = statusNames[discord_status] || 'Desconectado';
-            }
-        }
-
-    } catch (error) {
-        console.error('Error:', error);
+    if(avatar && user.avatar){
+      avatar.src = `https://cdn.discordapp.com/avatars/${DISCORD_ID}/${user.avatar}.webp`;
     }
+
+    if(dot){
+      dot.style.backgroundColor = statusColor[status] || statusColor.offline;
+    }
+
+    if(text){
+      const custom = activities.find(item => item.type === 4 && item.state);
+      text.textContent = custom ? custom.state : statusName[status] || "Desconectado";
+    }
+
+  }catch(e){
+    if(text){
+      text.textContent = "No disponible";
+    }
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    updateDiscordStatus();
-    setInterval(updateDiscordStatus, 15000);
-});
-
+loadDiscord();
+setInterval(loadDiscord, 15000);
